@@ -21,6 +21,9 @@ Classification of the **site of origin (SOO)** of premature ventricular contract
 
 ```
 ├── data/                          # Place data files here (see Data section)
+├── preprocessing/
+│   ├── introduction.ipynb         # Raw data -> processed .npy/.pkl files (saves to ../data/)
+│   └── rebuild_corrected_binary_dataset.py  # Fixes Task1 binary labels (see Data Preprocessing)
 ├── Task1/
 │   ├── exp_1/
 │   │   └── Experiment1_QRS_morphology.ipynb   # Exp1: Sequential pipeline (binned QRS, XGBoost)
@@ -41,33 +44,75 @@ Classification of the **site of origin (SOO)** of premature ventricular contract
 └── README.md
 ```
 
+> **Note:** `data/` sits at the repository root. All Task1/Task2 scripts resolve
+> their data path as `<script_folder>/../../data/` (two levels up from the
+> script). `preprocessing/introduction.ipynb` saves its outputs as `../data/...`
+> (one level up), since it sits directly under the root.
+
 ---
 
 ## Data Preprocessing
 
-Raw data from the four source datasets (Teknon, CARTO2, Database2, Sims2) is 
-processed by `preprocessing/introduction.ipynb`. This notebook performs:
+Raw data from the four source datasets (Teknon, CARTO2, Database2, Sims2) is
+processed in three steps. Each step's outputs are saved directly into `data/`.
 
-- SOO label standardization (mapping ~90 raw label variants to `SOO_7class`, 
+**Step 1 — `preprocessing/introduction.ipynb`**
+
+Performs:
+- SOO label standardization (mapping ~90 raw label variants to `SOO_7class`,
   with `SOO_chamber` used as a tiebreaker for ambiguous cases)
-- Patient-level train/validation/test splitting
-- Imputation (median for continuous features, mode for binary features) and 
-  encoding, fit only on training data to avoid leakage
-- Generation of the final `.npy`/`.pkl` files used as input for Task1 and Task2
+- Patient-level train/test splitting (80/20) of the Teknon cohort
+- Mapping of `SOO_7class` -> `SOO_3class` (RVOT / RCC-LCC-Commissure / LVOT)
+  for Task 2, and concatenation with CARTO2/Database2/Sims2
 
-Run this notebook first if starting from raw data:
+Generates (in `data/`):
+```
+X_train_pool.npy, y_train_pool.npy, info_train_pool.csv
+X_teknon_final_test.npy, y_teknon_final_test.npy, info_teknon_final_test.csv
+X_train_pool_task2_3class.npy, y_train_pool_task2_3class.npy, info_train_pool_task2_3class.csv
+X_teknon_final_test_task2_3class.npy, y_teknon_final_test_task2_3class.npy, info_teknon_final_test_task2_3class.csv
+full_data_7class.pkl
+```
 
 ```bash
 cd preprocessing
 jupyter notebook introduction.ipynb
 # Run all cells in order
-# Outputs: data/*.npy, data/*.pkl files described in the Data section below
 ```
 
-If you already have the processed `data/` files, you can skip this step and 
-go directly to Task 1 / Task 2.
+**Step 2 — `preprocessing/rebuild_corrected_binary_dataset.py`**
 
----
+The original Task 1 binary labels (Step 1 output) were derived from an
+auxiliary variable (`OTorigin`) that did not correctly represent the final
+RVOT/LVOT site of origin. This script does **not** modify the ECG signal
+arrays — it only reconstructs the binary labels from the standardized
+`SOO_7class` field, removes `Other`/`Unknown` patients, and regenerates the
+corrected Task 1 datasets used in all Task 1 experiment notebooks.
+
+Reads `X_train_pool.npy`, `y_train_pool.npy`, `info_train_pool.csv`,
+`X_teknon_final_test.npy`, `y_teknon_final_test.npy`, `info_teknon_final_test.csv`
+(from Step 1) and generates (in `data/`):
+```
+X_train_pool_binary_corrected_clean.npy
+y_train_pool_binary_corrected_clean.npy
+info_train_pool_binary_corrected_clean.csv
+X_teknon_final_test_binary_corrected_clean.npy
+y_teknon_final_test_binary_corrected_clean.npy
+info_teknon_final_test_binary_corrected_clean.csv
+```
+
+```bash
+cd preprocessing
+python rebuild_corrected_binary_dataset.py
+```
+
+**Step 3 — Task 1 / Task 2 experiments**
+
+With all files above in `data/`, proceed to the "How to Reproduce Results" section.
+
+If you already have all the processed `data/` files listed in the Data
+section below, you can skip Steps 1–2 entirely.
+
 ---
 
 ## Data

@@ -1,0 +1,37 @@
+patient,true_class,pred_class,P_RVOT,SOO_7class,PVC_transition,CLINICAL_SCORE,Age,Sex,HTA,correct,atypical_transition,confidence
+patient_145,RVOT,RVOT,0.684,Free Wall RVOT,V5,2.0,74.0,Female,Yes,True,False,0.368
+patient_146,LVOT,RVOT,0.617,LCC,V3,,,,,False,False,0.234
+patient_147,RVOT,RVOT,0.844,Free Wall RVOT,V5,1.0,56.0,Female,No,True,False,0.688
+patient_148,LVOT,LVOT,0.089,RCC/LCC Commissure,V1,1.0,65.0,Female,No,True,False,0.822
+patient_149,LVOT,LVOT,0.134,Summit LVOT,V6,3.0,55.0,Male,Yes,True,True,0.732
+patient_150,LVOT,LVOT,0.176,LCC,,2.0,69.0,Female,Yes,True,,0.648
+patient_151,LVOT,RVOT,0.897,LCC,V3,0.0,47.0,Female,No,False,False,0.794
+patient_152,RVOT,RVOT,0.713,Free Wall RVOT,V4,2.0,69.0,Male,No,True,False,0.426
+patient_153,RVOT,LVOT,0.46,Septum RVOT,V4,0.0,36.0,Female,No,False,False,0.08
+patient_154,RVOT,RVOT,0.928,Free Wall RVOT,V4,0.0,46.0,Female,No,True,False,0.856
+patient_155,RVOT,RVOT,0.571,Septum RVOT,V3,0.0,46.0,Female,No,True,True,0.142
+patient_156,RVOT,RVOT,0.774,Free Wall RVOT,V3,2.0,63.0,Female,Yes,True,True,0.548
+patient_157,RVOT,LVOT,0.314,Free Wall RVOT,V4,3.0,56.0,Male,Yes,False,False,0.372
+patient_158,LVOT,LVOT,0.495,RCC,V1,3.0,75.0,Male,Yes,True,False,0.01
+patient_159,RVOT,RVOT,0.708,Free Wall RVOT,V3,1.0,60.0,Female,No,True,True,0.416
+patient_160,LVOT,LVOT,0.092,RCC/LCC Commissure,V1,3.0,77.0,Male,Yes,True,False,0.816
+patient_161,RVOT,RVOT,0.552,Septum RVOT,V3,1.0,33.0,Male,No,True,True,0.104
+patient_162,RVOT,RVOT,0.95,Septum RVOT,V3,2.0,73.0,Female,Yes,True,True,0.9
+patient_163,RVOT,RVOT,0.882,Free Wall RVOT,V4,1.0,64.0,Female,No,True,False,0.764
+patient_164,RVOT,RVOT,0.942,Free Wall RVOT,V4,2.0,61.0,Female,Yes,True,False,0.884
+patient_165,LVOT,RVOT,0.537,Summit LVOT,V2,3.0,52.0,Male,Yes,False,False,0.074
+patient_166,LVOT,RVOT,0.724,Summit LVOT,V3,3.0,75.0,Male,Yes,False,False,0.448
+patient_167,RVOT,LVOT,0.2,Septum RVOT,V3,2.0,64.0,Male,No,False,True,0.6
+patient_168,LVOT,LVOT,0.5,Summit LVOT,V2,1.0,46.0,Male,No,True,False,0.0
+patient_169,RVOT,RVOT,0.878,Free Wall RVOT,V5,1.0,59.0,Male,No,True,False,0.756
+patient_170,RVOT,RVOT,0.778,Septum RVOT,V3,0.0,51.0,Female,No,True,True,0.556
+patient_171,LVOT,RVOT,0.592,Subvalvular LVOT,V1,,50.0,Male,,False,False,0.184
+patient_172,LVOT,LVOT,0.273,LCC,V2,0.0,45.0,Female,No,True,False,0.454
+patient_173,RVOT,RVOT,0.912,Free Wall RVOT,V4,0.0,50.0,Female,No,True,False,0.824
+patient_174,LVOT,LVOT,0.313,RCC/LCC Commissure,V4,2.0,59.0,Male,No,True,True,0.374
+patient_175,RVOT,RVOT,0.513,Septum RVOT,V6,2.0,61.0,Male,No,True,False,0.026
+patient_176,LVOT,LVOT,0.058,Summit LVOT,V1,3.0,61.0,Male,Yes,True,False,0.884
+patient_177,LVOT,RVOT,0.864,RCC,V3,3.0,52.0,Male,Yes,False,False,0.728
+patient_178,LVOT,RVOT,0.592,Subvalvular LVOT,V6,2.0,77.0,Male,No,False,True,0.184
+patient_179,LVOT,LVOT,0.433,Subvalvular LVOT,V1,3.0,88.0,Male,Yes,True,False,0.134
+patient_180,LVOT,LVOT,0.256,LCC,V1,0.0,32.0,Female,No,True,False,0.488
